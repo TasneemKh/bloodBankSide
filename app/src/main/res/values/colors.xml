@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#E44652</color>
+    <color name="colorPrimaryDark">#043353</color>
+    <color name="colorAccent">#CC656D</color>
+    <color name="colorLight">#FAF8F0</color>
+    <color name="colorMediumLight">#E4DFCF</color>
+
+    <color name="transparent">#8A2626</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="lightGray">#9b9faa</color>
+    <color name="StrokeColor">#c8c8c8</color>
+
+    <array name="array_dot_active">
+        <item>@color/colorPrimaryDark</item>
+        <item>@color/colorPrimaryDark</item>
+        <item>@color/colorPrimaryDark</item>
+        <item>@color/colorPrimaryDark</item>
+    </array>
+    <array name="array_dot_inactive">
+        <item>@color/StrokeColor</item>
+        <item>@color/StrokeColor</item>
+        <item>@color/StrokeColor</item>
+        <item>@color/StrokeColor</item>
+    </array>
+</resources>

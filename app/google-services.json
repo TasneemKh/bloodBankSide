@@ -1,0 +1,251 @@
+{
+  "project_info": {
+    "project_number": "161891893071",
+    "firebase_url": "https://red-wings-6b1c6.firebaseio.com",
+    "project_id": "red-wings-6b1c6",
+    "storage_bucket": "red-wings-6b1c6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161891893071:android:78f88cc9c5069ffa908f3a",
+        "android_client_info": {
+          "package_name": "com.example.Hana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161891893071-kv7sdmm3ounpt8oe4a00v5seshq5avbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP4IbncSvUr3w90PsHg883RAgoBIYZw_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161891893071-kv7sdmm3ounpt8oe4a00v5seshq5avbb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161891893071:android:3abbecc39f81e333908f3a",
+        "android_client_info": {
+          "package_name": "com.example.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161891893071-kv7sdmm3ounpt8oe4a00v5seshq5avbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP4IbncSvUr3w90PsHg883RAgoBIYZw_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161891893071-kv7sdmm3ounpt8oe4a00v5seshq5avbb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161891893071:android:e921b2645b8871e5908f3a",
+        "android_client_info": {
+          "package_name": "com.example.bloodbank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161891893071-kv7sdmm3ounpt8oe4a00v5seshq5avbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP4IbncSvUr3w90PsHg883RAgoBIYZw_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161891893071-kv7sdmm3ounpt8oe4a00v5seshq5avbb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161891893071:android:71eff57c6a04daad908f3a",
+        "android_client_info": {
+          "package_name": "com.example.blooddonationapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161891893071-kv7sdmm3ounpt8oe4a00v5seshq5avbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP4IbncSvUr3w90PsHg883RAgoBIYZw_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161891893071-kv7sdmm3ounpt8oe4a00v5seshq5avbb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161891893071:android:d9cf22fb69907530908f3a",
+        "android_client_info": {
+          "package_name": "com.example.completeprofile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161891893071-kv7sdmm3ounpt8oe4a00v5seshq5avbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP4IbncSvUr3w90PsHg883RAgoBIYZw_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161891893071-kv7sdmm3ounpt8oe4a00v5seshq5avbb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161891893071:android:c2887dde0d9bf17d908f3a",
+        "android_client_info": {
+          "package_name": "com.example.dalia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161891893071-7divn908rldnon73min1t6o63q68nlia.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dalia",
+            "certificate_hash": "d5a7d12c686d72fbae6cea779f520e4be6fd4f32"
+          }
+        },
+        {
+          "client_id": "161891893071-kv7sdmm3ounpt8oe4a00v5seshq5avbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP4IbncSvUr3w90PsHg883RAgoBIYZw_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161891893071-kv7sdmm3ounpt8oe4a00v5seshq5avbb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161891893071:android:f04733a800e01565908f3a",
+        "android_client_info": {
+          "package_name": "com.example.redwingsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161891893071-kv7sdmm3ounpt8oe4a00v5seshq5avbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP4IbncSvUr3w90PsHg883RAgoBIYZw_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161891893071-kv7sdmm3ounpt8oe4a00v5seshq5avbb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161891893071:android:86e8dee616eca3f8908f3a",
+        "android_client_info": {
+          "package_name": "com.example.redwingsproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161891893071-kv7sdmm3ounpt8oe4a00v5seshq5avbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP4IbncSvUr3w90PsHg883RAgoBIYZw_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161891893071-kv7sdmm3ounpt8oe4a00v5seshq5avbb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

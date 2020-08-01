@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLight"
+    android:padding="24dp">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/add_campaign"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/name"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                app:boxBackgroundColor="@color/colorLight"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="false"
+                app:startIconContentDescription="id card icon"
+                app:startIconDrawable="@drawable/camp_name"
+                app:startIconTint="@color/colorMediumLight">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/campName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/select_a_name_for_campaign"
+                    android:inputType="text"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/location"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                app:boxBackgroundColor="@color/colorLight"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="false"
+                app:startIconContentDescription="id card icon"
+                app:startIconDrawable="@drawable/camp_location"
+                app:startIconTint="@color/colorMediumLight">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/locationCamp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="@string/select_a_location_for_campaign"
+                    android:inputType="text"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/time0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="8dp"
+                    android:hint="@string/start_time"
+                    android:textSize="16sp"
+                    android:textStyle="normal"
+                    app:boxBackgroundColor="@color/colorLight"
+                    app:errorEnabled="true"
+                    app:hintAnimationEnabled="false"
+                    app:startIconContentDescription="id card icon"
+                    app:startIconDrawable="@drawable/camp_time"
+                    app:startIconTint="@color/colorMediumLight"
+                    android:layout_marginEnd="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/timeCamp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:hint="@string/_00_00"
+                        android:inputType="text"
+                        android:textColorHint="@color/colorPrimaryDark"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/time1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/end_time"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="8dp"
+                    android:textStyle="normal"
+                    app:boxBackgroundColor="@color/colorLight"
+                    app:errorEnabled="true"
+                    app:hintAnimationEnabled="false"
+                    app:startIconContentDescription="id card icon"
+                    app:startIconDrawable="@drawable/camp_time"
+                    app:startIconTint="@color/colorMediumLight"
+                    android:layout_marginStart="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/time1Camp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:hint="@string/_00_00"
+                        android:inputType="text"
+                        android:textColorHint="@color/colorPrimaryDark"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/date0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="8dp"
+                    android:hint="@string/start_date"
+                    android:textSize="16sp"
+                    android:textStyle="normal"
+                    app:boxBackgroundColor="@color/colorLight"
+                    app:errorEnabled="true"
+                    app:hintAnimationEnabled="false"
+                    app:startIconContentDescription="id card icon"
+                    app:startIconDrawable="@drawable/camp_date"
+                    app:startIconTint="@color/colorMediumLight"
+                    android:layout_marginEnd="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/dateCamp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:hint="@string/dd_mm_yyyy"
+                        android:inputType="text"
+                        android:textColorHint="@color/colorPrimaryDark"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/date1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/end_date"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="8dp"
+                    android:textStyle="normal"
+                    app:boxBackgroundColor="@color/colorLight"
+                    app:errorEnabled="true"
+                    app:hintAnimationEnabled="false"
+                    app:startIconContentDescription="id card icon"
+                    app:startIconDrawable="@drawable/camp_date"
+                    app:startIconTint="@color/colorMediumLight"
+                    android:layout_marginStart="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/date1Camp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:hint="@string/dd_mm_yyyy"
+                        android:inputType="text"
+                        android:textColorHint="@color/colorPrimaryDark"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:backgroundTint="@color/colorAccent"
+                android:gravity="center|center_horizontal"
+                android:text="@string/submit"
+                android:textColor="@color/colorWhite"
+                app:cornerRadius="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/numUnits" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
