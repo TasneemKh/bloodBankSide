@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".reservationActivity"/>
+        <activity android:name=".bloodBankReq"></activity>
+        <activity android:name=".searchActivity" />
+        <activity android:name=".reservationActivity" />
         <activity android:name=".campaignActivity" />
         <activity android:name=".requestActivity" />
         <activity android:name=".forgetPassword" />

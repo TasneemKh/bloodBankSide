@@ -37,5 +37,12 @@
     <string name="yes">yes</string>
     <string name="no">no</string>
     <string name="profileimg">profileImg</string>
+    <string name="no_result_was_found">No Result Was Found</string>
+    <string name="search">search</string>
+    <string name="blood_bank_requests">Blood Bank Requests</string>
+    <string name="edit">edit</string>
+    <string name="req_background">req_background</string>
+    <string name="urgent">URGENT</string>
+    <string name="a">A+</string>
 
 </resources>
