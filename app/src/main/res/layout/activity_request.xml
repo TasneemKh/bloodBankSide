@@ -74,7 +74,7 @@ android:background="@color/colorLight"
                     app:startIconDrawable="@drawable/req_num_units"
                     app:startIconTint="@color/colorMediumLight">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <EditText
                         android:id="@+id/NoOfUnits"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -105,7 +105,7 @@ android:background="@color/colorLight"
                     app:startIconDrawable="@drawable/req_blood_type"
                     app:startIconTint="@color/colorMediumLight">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <EditText
                         android:id="@+id/UnitsType"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -151,7 +151,7 @@ android:background="@color/colorLight"
                     app:startIconDrawable="@drawable/req_don_type"
                     app:startIconTint="@color/colorMediumLight">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <EditText
                         android:id="@+id/donType"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

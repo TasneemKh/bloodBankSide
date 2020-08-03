@@ -45,7 +45,7 @@
                 app:startIconDrawable="@drawable/camp_name"
                 app:startIconTint="@color/colorMediumLight">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
                     android:id="@+id/campName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -54,7 +54,8 @@
                     android:inputType="text"
                     android:textColorHint="@color/colorPrimaryDark"
                     android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:autofillHints="" />
 
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -71,7 +72,7 @@
                 app:startIconDrawable="@drawable/camp_location"
                 app:startIconTint="@color/colorMediumLight">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
                     android:id="@+id/locationCamp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -80,7 +81,8 @@
                     android:inputType="text"
                     android:textColorHint="@color/colorPrimaryDark"
                     android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:autofillHints="" />
 
             </com.google.android.material.textfield.TextInputLayout>
             <LinearLayout
@@ -106,7 +108,7 @@
                     app:startIconTint="@color/colorMediumLight"
                     android:layout_marginEnd="8dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <EditText
                         android:id="@+id/timeCamp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -115,7 +117,8 @@
                         android:inputType="text"
                         android:textColorHint="@color/colorPrimaryDark"
                         android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:importantForAutofill="no" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -135,7 +138,7 @@
                     app:startIconTint="@color/colorMediumLight"
                     android:layout_marginStart="8dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <EditText
                         android:id="@+id/time1Camp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -144,7 +147,8 @@
                         android:inputType="text"
                         android:textColorHint="@color/colorPrimaryDark"
                         android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:autofillHints="" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
             <LinearLayout
@@ -170,13 +174,14 @@
                     app:startIconTint="@color/colorMediumLight"
                     android:layout_marginEnd="8dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <EditText
                         android:id="@+id/dateCamp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:autofillHints=""
                         android:focusable="false"
                         android:hint="@string/dd_mm_yyyy"
-                        android:inputType="text"
+                        android:inputType="date|text"
                         android:textColorHint="@color/colorPrimaryDark"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -199,7 +204,7 @@
                     app:startIconTint="@color/colorMediumLight"
                     android:layout_marginStart="8dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <EditText
                         android:id="@+id/date1Camp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -208,7 +213,8 @@
                         android:inputType="text"
                         android:textColorHint="@color/colorPrimaryDark"
                         android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:autofillHints="" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 

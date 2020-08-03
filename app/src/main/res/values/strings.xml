@@ -14,6 +14,7 @@
     <string name="recoverPassText">Enter your email and we’ll send you \n instructions on how to reset your password.</string>
     <string name="forgotPassword">Forget password</string>
     <string name="recover_password">Recover password</string>
+
     <string name="add_request">Add Request</string>
     <string name="record">record</string>
     <string name="select_type_of_donation">select type of donation</string>
@@ -44,5 +45,12 @@
     <string name="req_background">req_background</string>
     <string name="urgent">URGENT</string>
     <string name="a">A+</string>
+    <string name="dealing_with_users_reservation">Dealing With Users Reservation</string>
+    <string name="you_need_to_deal_with_users_reservation_for_donation_by_decline_or_accept_according_to_user_show_off">You need to deal with users reservation for donation by decline or accept according to user show off</string>
+    <string name="announce_for_new_campaigns">Announce For New Campaigns</string>
+    <string name="announcing_for_new_campaigns_ecome_more_easier_just_add_all_information_about_campaign_and_all_users_nearby_campaigns_will_be_noticed">
+       Announcement for new campaigns become easier just add all information about the campaign and all users nearby campaigns will be noticed</string>
+    <string name="announce_blood_needs_request">Announce blood needs request</string>
+    <string name="it_becomes_easier_now_to_reach_to_all_users_who_can_donate_blood">It becomes easier now to reach to all users who can donate blood</string>
 
 </resources>
