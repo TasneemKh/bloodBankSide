@@ -51,8 +51,8 @@ public class logInActivity extends AppCompatActivity implements View.OnClickList
             //open main activity
             //it need to  changed
             Intent intent = new Intent(logInActivity.this , TabActivity.class);
-            intent.putExtra("map", " ");
             startActivity(intent);
+            finish();
         }
         initializeUI();
 

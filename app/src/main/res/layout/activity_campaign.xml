@@ -40,7 +40,6 @@
                 android:textStyle="normal"
                 app:boxBackgroundColor="@color/colorLight"
                 app:errorEnabled="true"
-                app:hintAnimationEnabled="false"
                 app:startIconContentDescription="id card icon"
                 app:startIconDrawable="@drawable/camp_name"
                 app:startIconTint="@color/colorMediumLight">
@@ -49,14 +48,12 @@
                     android:id="@+id/campName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="false"
                     android:hint="@string/select_a_name_for_campaign"
                     android:inputType="text"
                     android:textColorHint="@color/colorPrimaryDark"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:autofillHints="" />
-
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/location"
@@ -67,7 +64,6 @@
                 android:textStyle="normal"
                 app:boxBackgroundColor="@color/colorLight"
                 app:errorEnabled="true"
-                app:hintAnimationEnabled="false"
                 app:startIconContentDescription="id card icon"
                 app:startIconDrawable="@drawable/camp_location"
                 app:startIconTint="@color/colorMediumLight">
@@ -76,7 +72,6 @@
                     android:id="@+id/locationCamp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="false"
                     android:hint="@string/select_a_location_for_campaign"
                     android:inputType="text"
                     android:textColorHint="@color/colorPrimaryDark"

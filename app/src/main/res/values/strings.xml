@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">BloodBank</string>
     <string name="skip">skip</string>
-    <string name="start">start</string>
+    <string name="start">Get Started</string>
     /*Sign in*/
     <string name="welcome_txt">Welcome , Start \n controlling donations</string>
     <string name="enter_password">Enter Password</string>
@@ -52,5 +52,7 @@
        Announcement for new campaigns become easier just add all information about the campaign and all users nearby campaigns will be noticed</string>
     <string name="announce_blood_needs_request">Announce blood needs request</string>
     <string name="it_becomes_easier_now_to_reach_to_all_users_who_can_donate_blood">It becomes easier now to reach to all users who can donate blood</string>
+    <string name="red_wings">Red Wings</string>
+    <string name="red_wings_logo">red wings logo</string>
 
 </resources>

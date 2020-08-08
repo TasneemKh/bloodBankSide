@@ -2,15 +2,22 @@ package com.example.bloodbank;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.app.DatePickerDialog;
+import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.NumberPicker;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,8 +32,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -38,7 +50,11 @@ public class campaignActivity extends Fragment {
     TextInputLayout name,location,time0,time1,date0,date1;
     private FirebaseAuth mAuth;
     FirebaseUser user;
-    int numOfProducts;
+    int numOfProducts,hour,min;
+    DatePickerDialog picker;
+    Calendar c;
+String S,S1;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -49,6 +65,90 @@ public class campaignActivity extends Fragment {
     public void onViewCreated(View v, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(v, savedInstanceState);
         initializeUI();
+        timeCamp.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                time1();
+            }
+        });
+        time1Camp.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                time2();
+            }
+        });
+        dateCamp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cldr = Calendar.getInstance();
+                //Date currentTime = cldr.getInstance().getTime();
+
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                picker = new DatePickerDialog(getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                cldr.set(year,monthOfYear,dayOfMonth);
+                                c=cldr;
+                                SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss aa");
+                                String datetime = dateformat.format(cldr.getTime());
+                                dateCamp.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                String weekDay;
+                                SimpleDateFormat dayFormat = new SimpleDateFormat("E", Locale.US);
+                                Calendar calendar = cldr.getInstance();
+                                weekDay = dayFormat.format(calendar.getTime());
+                                S1=weekDay;
+                               /* DateTimeFormatter dayOfWeekFormatter
+                                        = null;
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    dayOfWeekFormatter = DateTimeFormatter.ofPattern("EEE", Locale.ENGLISH);
+                                    LocalDate date = LocalDate.of(year,monthOfYear,dayOfMonth);
+                                    S1=date.format(dayOfWeekFormatter);
+                                }*/
+                            }
+
+                        }, year, month, day);
+                picker.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+
+                picker.show();
+            }
+        });
+        date1Camp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cldr2 = Calendar.getInstance();
+                int day = cldr2.get(Calendar.DAY_OF_MONTH);
+                int month = cldr2.get(Calendar.MONTH);
+                int year = cldr2.get(Calendar.YEAR);
+
+                picker = new DatePickerDialog(getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                date1Camp.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                String weekDay;
+                                SimpleDateFormat dayFormat = new SimpleDateFormat("E", Locale.US);
+                                Calendar calendar = cldr2.getInstance();
+                                weekDay = dayFormat.format(calendar.getTime());
+                                S=weekDay;
+                             /*   DateTimeFormatter dayOfWeekFormatter
+                                        = null;
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    dayOfWeekFormatter = DateTimeFormatter.ofPattern("EEE", Locale.ENGLISH);
+                                    LocalDate date = LocalDate.of(year,monthOfYear,dayOfMonth);
+                                    S=date.format(dayOfWeekFormatter);
+                                }*/
+
+                            }
+
+                        }, year, month, day);
+                picker.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                picker.show();
+            }
+        });
         getView().findViewById(R.id.submit).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -66,6 +166,7 @@ public class campaignActivity extends Fragment {
                 String Input3 = time1Camp.getText().toString().trim();
                 String Input4 = dateCamp.getText().toString().trim();
                 String Input5 = date1Camp.getText().toString().trim();
+
                 data.put("Hospital_name",Input);
                 data.put("location",Input1);
                 data.put("starttime",Input2);
@@ -73,7 +174,13 @@ public class campaignActivity extends Fragment {
                 data.put("startDate",Input4);
                 data.put("endDate",Input5);
                 data.put("Type","campaign");
-                FirebaseDatabase.getInstance().getReference().child("Hospitals").child("Gaza").addValueEventListener(new ValueEventListener() {
+                String timeStamp=new SimpleDateFormat("dd/MM/YY HH:mm").format(Calendar.getInstance().getTime());
+
+                data.put("createdAt",timeStamp);
+                String x=S+" - "+S1;
+                data.put("workDays",x);
+                //data.put("workHours",);
+                /*FirebaseDatabase.getInstance().getReference().child("Hospitals").child("Gaza").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         numOfProducts = (int) dataSnapshot.getChildrenCount();
@@ -82,10 +189,10 @@ public class campaignActivity extends Fragment {
                     public void onCancelled (@NonNull DatabaseError error){
 
                     }
-                });
-                ++numOfProducts;
-                data.put("id",Integer.toString(numOfProducts));
-                FirebaseDatabase.getInstance().getReference().child("Hospitals").child("Gaza").child(Integer.toString(numOfProducts)).setValue(data)
+                });*/
+               // ++numOfProducts;
+                data.put("id",id);
+                FirebaseDatabase.getInstance().getReference().child("Hospitals").child("Gaza").child(id).setValue(data)
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
@@ -97,7 +204,12 @@ public class campaignActivity extends Fragment {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(getContext(), "Your request is added", Toast.LENGTH_SHORT).show();
-
+                                campName.setText("");
+                                locationCamp.setText("");
+                                timeCamp.setText("");
+                                time1Camp.setText("");
+                                dateCamp.setText("");
+                                date1Camp.setText("");
 
                             }
                         });
@@ -189,6 +301,81 @@ public class campaignActivity extends Fragment {
             return true;
         }
     }
+    public void time1(){
+        final AlertDialog.Builder d = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.time_picker, null);
+        d.setTitle("Set The Start Time Of Campaigns");
+        d.setView(dialogView);
+        final TimePicker timePicker = (TimePicker) dialogView.findViewById(R.id.timePicker);
+        timePicker.setCurrentHour(8); // before api level 23
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            timePicker.setHour(8);
+        }
+        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                hour=hourOfDay;
+                min=minute;
+            }
+        });
+        d.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                    int x=timePicker.getHour();
+                    int x1=timePicker.getMinute();
+                }
 
+                timeCamp.setText( +hour +" : " + min);
+            }
+        });
+        d.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        AlertDialog alertDialog = d.create();
+        alertDialog.show();
+
+    }
+    public void time2(){
+        final AlertDialog.Builder d = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.time_picker, null);
+        d.setTitle("Set The End Time Of Campaigns");
+        d.setView(dialogView);
+        final TimePicker timePicker = (TimePicker) dialogView.findViewById(R.id.timePicker);
+        timePicker.setCurrentHour(8); // before api level 23
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            timePicker.setHour(8);
+        }
+        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                hour=hourOfDay;
+                min=minute;
+            }
+        });
+        d.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                    int x=timePicker.getHour();
+                    int x1=timePicker.getMinute();
+                }
+
+                time1Camp.setText( +hour +" : " + min);
+            }
+        });
+        d.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        AlertDialog alertDialog = d.create();
+        alertDialog.show();
+
+    }
 
 }

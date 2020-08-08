@@ -34,8 +34,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
         android:gravity="center"
-        android:paddingLeft="32dp"
-        android:paddingRight="32dp"
+
         android:text="@string/you_need_to_deal_with_users_reservation_for_donation_by_decline_or_accept_according_to_user_show_off"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
