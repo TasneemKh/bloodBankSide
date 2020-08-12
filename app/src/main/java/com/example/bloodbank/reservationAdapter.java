@@ -11,6 +11,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -46,7 +53,11 @@ public class reservationAdapter extends RecyclerView.Adapter<reservationAdapter.
     class reservationVh extends RecyclerView.ViewHolder {
         TextView userName,type,time;
         ImageView profileImg,imageButton2,imageButton3;
-
+        //FirebaseDatabase database = FirebaseDatabase.getInstance();
+        FirebaseAuth mAuth;
+        String uid;
+        FirebaseUser user;
+        String uerUid;
         public reservationVh(@NonNull View itemView) {
             super(itemView);
             userName = itemView.findViewById(R.id.name);
@@ -59,6 +70,12 @@ public class reservationAdapter extends RecyclerView.Adapter<reservationAdapter.
 
         public void setData(final reservation reservation) {
            type.setText(reservation.getType());
+            time.setText(reservation.getTime());
+            uerUid= reservation.getUid();
+            userName.setText(reservation.getName());
+            mAuth = FirebaseAuth.getInstance();
+            user = mAuth.getCurrentUser();
+            uid = user.getUid();
 
             //profileImg.setImageDrawable(R.drawable.);
            // time.setText(String.reservation.getTime());
@@ -67,6 +84,14 @@ public class reservationAdapter extends RecyclerView.Adapter<reservationAdapter.
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             date.setText(dateFormat.format(donationHistory.getDateOfDonation()));*/
             //date.setText(format.format(new Date(String.valueOf(donationHistory.getDateOfDonation()))));
+            imageButton3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   /* FirebaseDatabase.getInstance().getReference("ReservationDon")
+                            .child(uid).child(uerUid).removeValue();
+*/
+                }
+            });
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

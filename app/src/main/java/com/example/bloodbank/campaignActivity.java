@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 
 import android.app.DatePickerDialog;
@@ -46,8 +48,10 @@ import java.util.regex.Pattern;
 import static android.view.View.GONE;
 
 public class campaignActivity extends Fragment {
-    EditText campName,locationCamp,timeCamp,time1Camp,dateCamp,date1Camp;
-    TextInputLayout name,location,time0,time1,date0,date1;
+   // EditText campName,locationCamp,timeCamp,time1Camp,dateCamp,date1Camp;
+   // TextInputLayout name,location,time0,time1,date0,date1;
+    AppCompatTextView timeCamp,time1Camp,dateCamp,date1Camp;
+    AppCompatEditText campName,locationCamp;
     private FirebaseAuth mAuth;
     FirebaseUser user;
     int numOfProducts,hour,min;
@@ -219,85 +223,99 @@ String S,S1;
 
     }
     private void initializeUI() {
-        campName=getView().findViewById(R.id.campName);
-        locationCamp =getView().findViewById(R.id.locationCamp);
-        timeCamp=getView().findViewById(R.id.timeCamp);
-        time1Camp=getView().findViewById(R.id.time1Camp);
-        dateCamp=getView().findViewById(R.id.dateCamp);
-        date1Camp=getView().findViewById(R.id.date1Camp);
+        campName=(AppCompatEditText)getView().findViewById(R.id.campName);
+        locationCamp =(AppCompatEditText)getView().findViewById(R.id.locationCamp);
+        timeCamp=(AppCompatTextView)getView().findViewById(R.id.timeCamp);
+        time1Camp=(AppCompatTextView)getView().findViewById(R.id.time1Camp);
+        dateCamp=(AppCompatTextView)getView().findViewById(R.id.dateCamp);
+        date1Camp=(AppCompatTextView)getView().findViewById(R.id.date1Camp);
     }
     private boolean validateCampName(){
-        name=getView().findViewById(R.id.name);
+       // name=getView().findViewById(R.id.name);
         String Input = campName.getText().toString().trim();
         if (Input.isEmpty()) {
-            name.setError("Field can't be empty");
+           // name.setError("Field can't be empty");
+            Toast.makeText(getActivity().getApplicationContext(), "Field can't be empty", Toast.LENGTH_SHORT).show();
+
             return false;
         }else if (!Pattern.compile("[ .a-zA-Z]+").matcher(Input).matches()) {
-            name.setError("Please enter a valid name");
+           // name.setError("Please enter a valid name");
+            Toast.makeText(getActivity().getApplicationContext(), "Please enter a valid name", Toast.LENGTH_SHORT).show();
+
             return false;
         }
         else {
-            name.setError(null);
+            //name.setError(null);
             return true;
         }
     }
     private boolean validateCampLocation(){
-        location=getView().findViewById(R.id.location);
+       // location=getView().findViewById(R.id.location);
         String Input = locationCamp.getText().toString().trim();
         if (Input.isEmpty()) {
-            location.setError("Field can't be empty");
+           // location.setError("Field can't be empty");
+            Toast.makeText(getActivity().getApplicationContext(), "Field can't be empty", Toast.LENGTH_SHORT).show();
+
             return false;
         }
         else {
-            location.setError(null);
+         //   location.setError(null);
             return true;
         }
     }
     private boolean validateCamptime0(){
-        time0=getView().findViewById(R.id.time0);
+    //    time0=getView().findViewById(R.id.time0);
         String Input = timeCamp.getText().toString().trim();
         if (Input.isEmpty()) {
-            time0.setError("Field can't be empty");
+          //  time0.setError("Field can't be empty");
+            Toast.makeText(getActivity().getApplicationContext(), "Field can't be empty", Toast.LENGTH_SHORT).show();
+
             return false;
         }
         else {
-            time0.setError(null);
+          //  time0.setError(null);
             return true;
         }
     }
     private boolean validateCamptime1(){
-        time1=getView().findViewById(R.id.time1);
+       // time1=getView().findViewById(R.id.time1);
         String Input = time1Camp.getText().toString().trim();
         if (Input.isEmpty()) {
-            time1.setError("Field can't be empty");
+          //  time1.setError("Field can't be empty");
+            Toast.makeText(getActivity().getApplicationContext(), "Field can't be empty", Toast.LENGTH_SHORT).show();
+
             return false;
         }
         else {
-            time1.setError(null);
+            //time1.setError(null);
             return true;
         }
     }
     private boolean validateCampdate(){
-        date0=getView().findViewById(R.id.date0);
+     //   date0=getView().findViewById(R.id.date0);
         String Input = dateCamp.getText().toString().trim();
         if (Input.isEmpty()) {
-            date0.setError("Field can't be empty");
+           // date0.setError("Field can't be empty");
+            Toast.makeText(getActivity().getApplicationContext(), "Field can't be empty", Toast.LENGTH_SHORT).show();
+
             return false;
         }
         else {
-            date0.setError(null);
+           // date0.setError(null);
             return true;
         }
     }
     private boolean validateCampdate1(){
-        date1=getView().findViewById(R.id.date1);
+       // date1=getView().findViewById(R.id.date1);
         String Input = date1Camp.getText().toString().trim();
         if (Input.isEmpty()) {
-            date1.setError("Field can't be empty");
+         //   date1.setError("Field can't be empty");
+            Toast.makeText(getActivity().getApplicationContext(), "Field can't be empty", Toast.LENGTH_SHORT).show();
+
             return false;
         }
         else {
-            date1.setError(null);
+            //date1.setError(null);
             return true;
         }
     }

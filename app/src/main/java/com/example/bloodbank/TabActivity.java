@@ -21,7 +21,14 @@ public class TabActivity extends AppCompatActivity implements BottomNavigationVi
         bottomNavigationView.setItemIconTintList(null);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
        // String data = getIntent().getStringExtra("map");
-        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
+        String data = getIntent().getStringExtra("reservation");
+        if (data != null && data.contentEquals("1")) {
+            bottomNavigationView.setSelectedItemId(R.id.navigation_notification);
+        }else{
+
+            bottomNavigationView.setSelectedItemId(R.id.navigation_home);
+        }
+
 
 
 

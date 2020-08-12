@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 
 import android.content.DialogInterface;
@@ -39,14 +40,15 @@ import java.util.Map;
 import java.util.UUID;
 
 public class requestActivity  extends Fragment {
-    TextInputLayout typeOfDonation,bloodType,numUnits;
-    EditText donType,UnitsType,NoOfUnits;
+    //TextInputLayout typeOfDonation,bloodType,numUnits;
+    AppCompatTextView donType,UnitsType,NoOfUnits;
+   // EditText donType,UnitsType,NoOfUnits;
     private FirebaseAuth mAuth;
     FirebaseUser user;
     SwitchMaterial simpleSwitch;
     String[] arrayPickerType= new String[]{"O+","O-","A+","A-","B+","B-","AB+","AB-",};
-int numOfProducts;
-ImageButton viewReq;
+    int numOfProducts;
+    ImageButton viewReq;
    // String[] arrayPickerType= new String[]{"o positive","o negative","A positive","A negative","B positive","B negative","AB positive","AB negative"};
     String[] arrayPickerDonType= new String[]{"Blood","Platelets"};
 
@@ -71,8 +73,6 @@ ImageButton viewReq;
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(), bloodBankReq.class);
                 startActivity(i);
-
-
             }
         });
         NoOfUnits.setOnClickListener(new View.OnClickListener(){
@@ -103,27 +103,10 @@ ImageButton viewReq;
                 user = mAuth.getCurrentUser();
                 String uid = user.getUid();
                 String id= UUID.randomUUID().toString();
-               /* FirebaseDatabase.getInstance().getReference().child("bloodBankReq").child(uid).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        numOfProducts = (int) dataSnapshot.getChildrenCount();
-                    }
-                    @Override
-                    public void onCancelled (@NonNull DatabaseError error){
-
-                    }
-                });*/
-                //++numOfProducts;
                 Map<String,Object> data = new HashMap<>();
                 DateTimeFormatter dtf = null;
                 LocalDateTime now;
                 String Input4;
-               /* if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                    dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-                    now= LocalDateTime.now();
-                    Input4=dtf.format(now);
-                }
-*/
                 String Input = donType.getText().toString().trim();
                 String Input1 = UnitsType.getText().toString().trim();
                 String Input2 = NoOfUnits.getText().toString().trim();
@@ -168,35 +151,40 @@ ImageButton viewReq;
 
     }
     private boolean validatetypeOfDonation(){
-        typeOfDonation=getView().findViewById(R.id.typeOfDonation);
+       // typeOfDonation=getView().findViewById(R.id.typeOfDonation);
         String Input = donType.getText().toString().trim();
         if (Input.isEmpty()) {
-            typeOfDonation.setError("Field can't be empty");
+           // typeOfDonation.setError("Field can't be empty");
+            Toast.makeText(getActivity().getApplicationContext(), "Field can't be empty", Toast.LENGTH_SHORT).show();
             return false;
         }else {
-            typeOfDonation.setError(null);
+           // typeOfDonation.setError(null);
             return true;
         }
     }
     private boolean validatebloodType(){
-        bloodType=getView().findViewById(R.id.bloodType);
+        //bloodType=getView().findViewById(R.id.bloodType);
         String Input = UnitsType.getText().toString().trim();
         if (Input.isEmpty()) {
-            bloodType.setError("Field can't be empty");
+            //bloodType.setError("Field can't be empty");
+            Toast.makeText(getActivity().getApplicationContext(), "Field can't be empty", Toast.LENGTH_SHORT).show();
+
             return false;
         }else {
-            bloodType.setError(null);
+            //bloodType.setError(null);
             return true;
         }
     }
     private boolean validatenumUnits(){
-        numUnits=getView().findViewById(R.id.numUnits);
+      //  numUnits=getView().findViewById(R.id.numUnits);
         String Input = NoOfUnits.getText().toString().trim();
         if (Input.isEmpty()) {
-            numUnits.setError("Field can't be empty");
+           // numUnits.setError("Field can't be empty");
+            Toast.makeText(getActivity().getApplicationContext(), "Field can't be empty", Toast.LENGTH_SHORT).show();
+
             return false;
         }else {
-            numUnits.setError(null);
+          //  numUnits.setError(null);
             return true;
         }
     }
@@ -301,3 +289,21 @@ ImageButton viewReq;
 
     }
 }
+
+  /* FirebaseDatabase.getInstance().getReference().child("bloodBankReq").child(uid).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        numOfProducts = (int) dataSnapshot.getChildrenCount();
+                    }
+                    @Override
+                    public void onCancelled (@NonNull DatabaseError error){
+
+                    }
+                });*/
+//++numOfProducts;
+/* if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+                    now= LocalDateTime.now();
+                    Input4=dtf.format(now);
+                }
+*/

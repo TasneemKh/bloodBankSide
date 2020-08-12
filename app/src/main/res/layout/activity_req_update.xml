@@ -148,7 +148,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:startIconContentDescription="id card icon"
-                    app:startIconDrawable="@drawable/req_don_type"
+                    app:startIconDrawable="@drawable/ic_type_group"
                     app:startIconTint="@color/colorMediumLight">
 
                     <EditText

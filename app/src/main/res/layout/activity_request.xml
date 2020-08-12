@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-android:background="@color/colorLight"
-    tools:context=".requestActivity">
+    android:background="@color/colorLight">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@ android:background="@color/colorLight"
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
@@ -28,6 +28,7 @@ android:background="@color/colorLight"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:padding="16dp"
+                android:layout_marginBottom="32dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -50,140 +51,248 @@ android:background="@color/colorLight"
                     android:src="@drawable/record" />
 
             </LinearLayout>
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/numUnits"
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/ic_type_group" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:background="#85E4DFCF"
+                    android:layout_marginLeft="8dp" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:hint="@string/enter_number_of_units"
-                    android:textSize="16sp"
-                    android:textStyle="normal"
-                    app:boxBackgroundColor="@color/colorLight"
-                    app:errorEnabled="true"
-                    app:hintAnimationEnabled="false"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/bloodType"
-                    app:startIconContentDescription="id card icon"
-                    app:startIconDrawable="@drawable/req_num_units"
-                    app:startIconTint="@color/colorMediumLight">
+                    android:layout_marginStart="18dp"
+                    android:layout_marginLeft="8dp"
+                    android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/NoOfUnits"
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:focusable="false"
-                        android:hint="@string/select_type_of_donation"
-                        android:inputType="text"
-                        android:textColorHint="@color/colorPrimaryDark"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="start"
+                        android:text="Donation Type"
+                        android:textAlignment="textStart"
+                        android:textColor="#242134"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/include" />
 
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/bloodType"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:hint="@string/blood_type_needed"
-                    android:textSize="16sp"
-                    android:textStyle="normal"
-                    app:boxBackgroundColor="@color/colorLight"
-                    app:errorEnabled="true"
-                    app:hintAnimationEnabled="false"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/typeOfDonation"
-                    app:startIconContentDescription="id card icon"
-                    app:startIconDrawable="@drawable/req_blood_type"
-                    app:startIconTint="@color/colorMediumLight">
-
-                    <EditText
-                        android:id="@+id/UnitsType"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusable="false"
-                        android:hint="@string/select_type_of_donation"
-                        android:inputType="text"
-                        android:textColorHint="@color/colorPrimaryDark"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/switch1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:padding="4dp"
-                    android:text="@string/for_emergency"
-                    app:layout_constraintBottom_toTopOf="@+id/submit"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/numUnits"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:switchPadding="8dp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/typeOfDonation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:hint="@string/type"
-                    android:textSize="16sp"
-                    android:textStyle="normal"
-                    app:boxBackgroundColor="@color/colorLight"
-                    app:errorEnabled="true"
-                    app:hintAnimationEnabled="false"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:startIconContentDescription="id card icon"
-                    app:startIconDrawable="@drawable/req_don_type"
-                    app:startIconTint="@color/colorMediumLight">
-
-                    <EditText
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/donType"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:focusable="false"
-                        android:hint="@string/select_type_of_donation"
-                        android:inputType="text"
-                        android:textColorHint="@color/colorPrimaryDark"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="start"
+                        android:hint="select one please "
+                        android:textAlignment="textStart"
+                        android:textColor="#A1043353"
+                        android:textColorHint="#A1043353"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/include" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
 
-                <Button
-                    android:id="@+id/submit"
-                    android:layout_width="260dp"
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/colorMediumLight" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/req_blood_type" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:background="#85E4DFCF"
+                    android:layout_marginLeft="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:backgroundTint="@color/colorAccent"
-                    android:text="@string/submit"
-                    android:textColor="@color/colorWhite"
-                    app:cornerRadius="5dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/numUnits" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_marginStart="18dp"
+                    android:layout_marginLeft="8dp"
+                    android:orientation="vertical">
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="start"
+                        android:text="@string/blood_type_needed"
+                        android:textAlignment="textStart"
+                        android:textColor="#242134"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/include" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/UnitsType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="start"
+                        android:hint="select one please "
+                        android:textAlignment="textStart"
+                        android:textColor="#A1043353"
+                        android:textColorHint="#A1043353"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/colorMediumLight" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/req_num_units" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:background="#85E4DFCF"
+                    android:layout_marginLeft="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginLeft="8dp"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="start"
+                        android:text="@string/enter_number_of_units"
+                        android:textAlignment="textStart"
+                        android:textColor="#242134"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/NoOfUnits"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="start"
+                        android:hint="select one please "
+                        android:textAlignment="textStart"
+                        android:textColor="#A1043353"
+                        android:textColorHint="#A1043353"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/colorMediumLight" />
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:padding="4dp"
+                android:text="@string/for_emergency"
+                app:layout_constraintBottom_toTopOf="@+id/submit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/numUnits"
+                app:layout_constraintVertical_bias="0.0"
+                app:switchPadding="8dp" />
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/submit"
+                android:textColor="@color/colorWhite"
+                app:cornerRadius="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/numUnits" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
