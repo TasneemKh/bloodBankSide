@@ -12,6 +12,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.text.DateFormat;
 import java.util.List;
 
@@ -45,6 +52,7 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.userVh>{
     class userVh extends RecyclerView.ViewHolder {
         TextView name;
         ImageView image;
+
         public userVh(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
@@ -54,6 +62,8 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.userVh>{
         public void setData(final user user) {
             Toast.makeText(context, "in"+user.getFullname() , Toast.LENGTH_SHORT).show();
            name.setText(user.getFullname());
+
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

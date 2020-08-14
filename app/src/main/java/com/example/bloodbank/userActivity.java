@@ -38,7 +38,7 @@ import java.util.UUID;
 import static android.view.View.GONE;
 
 public class userActivity extends AppCompatActivity {
-    TextView name;
+    TextView name,hos;
     ImageButton back;
     Button add,edit;
     AppCompatTextView bloodType,mobile,weight,birthday;
@@ -46,13 +46,16 @@ public class userActivity extends AppCompatActivity {
     String i5;
     private FirebaseAuth mAuth;
     FirebaseUser user;
-    String uid,hosName;
+    String uid,b;
+    Map<String,Object> data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
+        uid = user.getUid();
+
         String i=getIntent().getStringExtra("name");
         String i1=getIntent().getStringExtra("wieght");
         String i2=getIntent().getStringExtra("birthday");
@@ -61,7 +64,29 @@ public class userActivity extends AppCompatActivity {
          i5=getIntent().getStringExtra("uid");
         int drugDurations=getIntent().getIntExtra("drugDurations",0);
         int reminderPeriod=getIntent().getIntExtra("reminderPeriod",0);
+        hos=findViewById(R.id.hos);
+        FirebaseDatabase.getInstance().getReference().child("Hospitals").child("Gaza").orderByChild("Type").equalTo("hospital").
+                addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                                String x=dataSnapshot1.child("uid").getValue(String.class);
+                                if(uid.equals(x)){
+                                    String hosName=dataSnapshot1.child("Hospital_name").getValue(String.class);
+                                    //   data.put("placeOfDonation", hosName);
+                                    hos.setText(hosName);
+                                    Toast.makeText(getApplicationContext(),hosName , Toast.LENGTH_SHORT).show();
+                                    b=hosName;
+                                }
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled (@NonNull DatabaseError error){
 
+                    }
+                });
         name=findViewById(R.id.name);
         name.setText(i);
         weight=findViewById(R.id.weight);
@@ -80,6 +105,7 @@ public class userActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        add=findViewById(R.id.add);
 
         if(drugDurations==0 && reminderPeriod==0){
             add.setEnabled(true);
@@ -90,7 +116,6 @@ public class userActivity extends AppCompatActivity {
                 }
             });
         }else{
-            add=findViewById(R.id.add);
             add.setEnabled(false);
             Toast.makeText(getApplicationContext(),"User can not donate right now",Toast.LENGTH_SHORT).show();
         }
@@ -102,9 +127,6 @@ public class userActivity extends AppCompatActivity {
                 show1();
             }
         });
-
-
-
 
 
     }
@@ -164,34 +186,16 @@ public class userActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 int u =pickers.getValue();
                 String id= UUID.randomUUID().toString();
-               uid = user.getUid();
                 String selecPicker= arrayPickerDonType[u];
-                Map<String,Object> data = new HashMap<>();
+                data = new HashMap<>();
                 data.put("donationType",selecPicker);
-                FirebaseDatabase.getInstance().getReference().child("Hospitals").child("Gaza").orderByChild("Type").equalTo("hospital").
-                addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                                String x=dataSnapshot1.child("uid").getValue(String.class);
 
-                                if(uid.equals(x)){
-                                    hosName=dataSnapshot1.child("Hospital_name").getValue(String.class);
-                                }
-                            }
 
-                        }
-                    }
-                    @Override
-                    public void onCancelled (@NonNull DatabaseError error){
-
-                    }
-                });
-                data.put("placeOfDonation:",hosName);
                 String timeStamp=new SimpleDateFormat("dd/MM/YYYY").format(Calendar.getInstance().getTime());
                 String date=new SimpleDateFormat("dd/MM/YYYY").format(Calendar.getInstance().getTime());
                 data.put("dateOfDonation",timeStamp);
+                data.put("placeOfDonation", hos.getText().toString());
+
                 FirebaseDatabase.getInstance().getReference().child("donations").child(i5).child(id)
                         .setValue(data)
                         .addOnFailureListener(new OnFailureListener() {
