@@ -50,14 +50,19 @@ import static android.view.View.GONE;
 public class campaignActivity extends Fragment {
    // EditText campName,locationCamp,timeCamp,time1Camp,dateCamp,date1Camp;
    // TextInputLayout name,location,time0,time1,date0,date1;
-    AppCompatTextView timeCamp,time1Camp,dateCamp,date1Camp;
-    AppCompatEditText campName,locationCamp;
+    AppCompatTextView timeCamp,time1Camp,dateCamp,date1Camp,locationCamp;
+    AppCompatEditText campName;
     private FirebaseAuth mAuth;
     FirebaseUser user;
     int numOfProducts,hour,min;
     DatePickerDialog picker;
     Calendar c;
-String S,S1;
+    int intArray;
+    String S,S1;
+    String[] arrayPickerType= new String[]{"Al azhar university","Al-Aqsa University","Hassan AlBanna mosque","Mosque of Omar bin al-Khattab al-Mawasi","Beit Hanoun hospital"};
+    double[] arrayLat= new double[]{31.5144759,31.510875,31.459972,31.373558,31.5390887};
+    double[] arrayLon= new double[]{34.4402861,34.440780,34.391813,34.282185,34.5376837};
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,6 +74,12 @@ String S,S1;
     public void onViewCreated(View v, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(v, savedInstanceState);
         initializeUI();
+        locationCamp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                campaignName();
+            }
+        });
         timeCamp.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -85,8 +96,6 @@ String S,S1;
             @Override
             public void onClick(View v) {
                 final Calendar cldr = Calendar.getInstance();
-                //Date currentTime = cldr.getInstance().getTime();
-
                 int day = cldr.get(Calendar.DAY_OF_MONTH);
                 int month = cldr.get(Calendar.MONTH);
                 int year = cldr.get(Calendar.YEAR);
@@ -104,13 +113,7 @@ String S,S1;
                                 Calendar calendar = cldr.getInstance();
                                 weekDay = dayFormat.format(calendar.getTime());
                                 S1=weekDay;
-                               /* DateTimeFormatter dayOfWeekFormatter
-                                        = null;
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    dayOfWeekFormatter = DateTimeFormatter.ofPattern("EEE", Locale.ENGLISH);
-                                    LocalDate date = LocalDate.of(year,monthOfYear,dayOfMonth);
-                                    S1=date.format(dayOfWeekFormatter);
-                                }*/
+
                             }
 
                         }, year, month, day);
@@ -137,13 +140,7 @@ String S,S1;
                                 Calendar calendar = cldr2.getInstance();
                                 weekDay = dayFormat.format(calendar.getTime());
                                 S=weekDay;
-                             /*   DateTimeFormatter dayOfWeekFormatter
-                                        = null;
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    dayOfWeekFormatter = DateTimeFormatter.ofPattern("EEE", Locale.ENGLISH);
-                                    LocalDate date = LocalDate.of(year,monthOfYear,dayOfMonth);
-                                    S=date.format(dayOfWeekFormatter);
-                                }*/
+
 
                             }
 
@@ -178,23 +175,13 @@ String S,S1;
                 data.put("startDate",Input4);
                 data.put("endDate",Input5);
                 data.put("Type","campaign");
+                data.put("latitude",arrayLat[intArray]);
+                data.put("longitude",arrayLon[intArray]);
                 String timeStamp=new SimpleDateFormat("dd/MM/YY HH:mm").format(Calendar.getInstance().getTime());
 
                 data.put("createdAt",timeStamp);
                 String x=S+" - "+S1;
                 data.put("workDays",x);
-                //data.put("workHours",);
-                /*FirebaseDatabase.getInstance().getReference().child("Hospitals").child("Gaza").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        numOfProducts = (int) dataSnapshot.getChildrenCount();
-                    }
-                    @Override
-                    public void onCancelled (@NonNull DatabaseError error){
-
-                    }
-                });*/
-               // ++numOfProducts;
                 data.put("id",id);
                 FirebaseDatabase.getInstance().getReference().child("Hospitals").child("Gaza").child(id).setValue(data)
                         .addOnFailureListener(new OnFailureListener() {
@@ -224,7 +211,7 @@ String S,S1;
     }
     private void initializeUI() {
         campName=(AppCompatEditText)getView().findViewById(R.id.campName);
-        locationCamp =(AppCompatEditText)getView().findViewById(R.id.locationCamp);
+        locationCamp =(AppCompatTextView)getView().findViewById(R.id.locationCamp);
         timeCamp=(AppCompatTextView)getView().findViewById(R.id.timeCamp);
         time1Camp=(AppCompatTextView)getView().findViewById(R.id.time1Camp);
         dateCamp=(AppCompatTextView)getView().findViewById(R.id.dateCamp);
@@ -395,5 +382,67 @@ String S,S1;
         alertDialog.show();
 
     }
+    public void campaignName() {
 
+        final AlertDialog.Builder d = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.number_picker, null);
+        d.setTitle("Set Campaign location");
+        d.setView(dialogView);
+        final NumberPicker pickers = (NumberPicker) dialogView.findViewById(R.id.unitsNumber);
+        pickers.setMinValue(0);
+        pickers.setMaxValue(arrayPickerType.length - 1);
+        pickers.setDisplayedValues(arrayPickerType);
+        pickers.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        pickers.setWrapSelectorWheel(true);
+        pickers.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+            }
+        });
+        d.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                intArray=pickers.getValue();
+                String selecPicker = arrayPickerType[intArray];
+                locationCamp.setText(selecPicker);
+               // donType.setText(selecPicker);
+            }
+        });
+        d.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        AlertDialog alertDialog = d.create();
+        alertDialog.show();
+
+    }
 }
+/* DateTimeFormatter dayOfWeekFormatter
+                                        = null;
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    dayOfWeekFormatter = DateTimeFormatter.ofPattern("EEE", Locale.ENGLISH);
+                                    LocalDate date = LocalDate.of(year,monthOfYear,dayOfMonth);
+                                    S1=date.format(dayOfWeekFormatter);
+                                }*/
+
+//data.put("workHours",);
+                /*FirebaseDatabase.getInstance().getReference().child("Hospitals").child("Gaza").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        numOfProducts = (int) dataSnapshot.getChildrenCount();
+                    }
+                    @Override
+                    public void onCancelled (@NonNull DatabaseError error){
+
+                    }
+                });*/
+// ++numOfProducts;
+   /*   DateTimeFormatter dayOfWeekFormatter
+                                        = null;
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    dayOfWeekFormatter = DateTimeFormatter.ofPattern("EEE", Locale.ENGLISH);
+                                    LocalDate date = LocalDate.of(year,monthOfYear,dayOfMonth);
+                                    S=date.format(dayOfWeekFormatter);
+                                }*/

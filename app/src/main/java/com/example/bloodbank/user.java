@@ -8,12 +8,23 @@ public class user {
     private String identityNumber;
     private String gender;
     private int drugDurations;
+    private int reminderPeriod;
+
+
     private String fullname,email,birthday;
 
+
+    private String uid;
 
 
 
     public user() {
+    }
+
+    public user(String fullname,String uid ) {
+        this.fullname = fullname;
+        this.uid = uid;
+
     }
 
     public user(String phoneNumber, String weight, String bloodType, String identityNumber, String gender, int drugDurations) {
@@ -33,6 +44,18 @@ public class user {
         this.bloodType = bloodType;
         this.gender = gender;
     }
+
+    public user(String phoneNumber, String weight, String bloodType, String fullname, String birthday, String uid,int drugDurations, int reminderPeriod) {
+        this.phoneNumber = phoneNumber;
+        this.weight = weight;
+        this.bloodType = bloodType;
+        this.fullname = fullname;
+        this.birthday = birthday;
+        this.uid = uid;
+        this.drugDurations=drugDurations;
+        this.reminderPeriod=reminderPeriod;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -102,5 +125,21 @@ public class user {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    public int getReminderPeriod() {
+        return reminderPeriod;
+    }
+
+    public void setReminderPeriod(int reminderPeriod) {
+        this.reminderPeriod = reminderPeriod;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

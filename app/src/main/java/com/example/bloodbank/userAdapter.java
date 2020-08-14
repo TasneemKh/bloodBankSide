@@ -52,17 +52,9 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.userVh>{
         }
 
         public void setData(final user user) {
+            Toast.makeText(context, "in"+user.getFullname() , Toast.LENGTH_SHORT).show();
            name.setText(user.getFullname());
-            /* location.setText(Campaigns.getLocation());
-            String x=Campaigns.getNo_units_needed() +" BLOOD UNIT NEEDED";
-            numberOfUnits.setText(x);
-            String y=Campaigns.getType();
-            if (y.equals("campaign")){
-                image.setImageResource(R.drawable.campaigns);
 
-            }else{
-                image.setImageResource(R.drawable.hospitals);
-            }*/
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -73,12 +65,12 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.userVh>{
                     intent.putExtra("birthday",user.getBirthday());
                     intent.putExtra("phone",user.getPhoneNumber());
                     intent.putExtra("bloodTyp",user.getBloodType());
+                    intent.putExtra("uid",user.getUid());
+                    intent.putExtra("drugDurations",user.getDrugDurations());
+                    intent.putExtra("reminderPeriod",user.getReminderPeriod());
+
                     itemView.getContext().startActivity(intent);
-                   /* Bundle params = new Bundle();
-                    params.putDouble("Latitude", Campaigns.getLatitude());
-                    params.putDouble("Longitude", Campaigns.getLongitude());
-                    intent.putExtras(params);*/
-                 //   itemView.getContext().startActivity(intent);
+
 
                 }
             });
@@ -86,3 +78,13 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.userVh>{
         }
     }
 }
+ /* location.setText(Campaigns.getLocation());
+            String x=Campaigns.getNo_units_needed() +" BLOOD UNIT NEEDED";
+            numberOfUnits.setText(x);
+            String y=Campaigns.getType();
+            if (y.equals("campaign")){
+                image.setImageResource(R.drawable.campaigns);
+
+            }else{
+                image.setImageResource(R.drawable.hospitals);
+            }*/

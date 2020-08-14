@@ -30,6 +30,7 @@
             android:text="Tasneem khrais"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
+
     </LinearLayout>
 
     <View

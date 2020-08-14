@@ -7,10 +7,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -37,7 +39,7 @@ public class reservationActivity  extends Fragment {
     RecyclerView recyclerView0;
     private String name;
     private LinearLayoutManager mLayoutManager;
-
+ImageButton search;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -51,6 +53,14 @@ public class reservationActivity  extends Fragment {
         pgsBar = (ProgressBar)getView().findViewById(R.id.pBar);
         user = mAuth.getCurrentUser();
         uid = user.getUid();
+        search=getActivity().findViewById(R.id.search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getActivity().getApplicationContext(),searchActivity.class);
+                startActivity(i);
+            }
+        });
         recyclerView0 = getView().findViewById(R.id.reservation_rv);
         recyclerView0.setHasFixedSize(true);
         mLayoutManager=new LinearLayoutManager(getContext());
@@ -65,68 +75,23 @@ public class reservationActivity  extends Fragment {
                         list0 = new ArrayList<reservation>();
                         if (dataSnapshot.exists()) {
                             for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+
                                 String date = dataSnapshot1.child("date").getValue(String.class);
                                 String donType = dataSnapshot1.child("donType").getValue(String.class);
                                 String time = dataSnapshot1.child("time").getValue(String.class);
                                 String userId = dataSnapshot1.child("userId").getValue(String.class);
-                                DatabaseReference data=FirebaseDatabase.getInstance().getReference().
-                                        child("User").child(userId).child("userName");
-                                data.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(DataSnapshot dataSnapshot) {
-                                        name=dataSnapshot.getValue(String.class);
-                                        Toast.makeText(getActivity().getApplicationContext(), ""+name, Toast.LENGTH_SHORT).show();
 
-                                    }
 
-                                    @Override
-                                    public void onCancelled(DatabaseError databaseError) {
-
-                                    }
-                                });
-                                String c=name;
-                                //String name=data.child("userName").getValue(String.class);
-
-                              /*  reservation p = new reservation(uid,date,time,name,donType);
-
-                                list0.add(p);*/
-                              /*  final reservation p = new reservation();
-                                String date = dataSnapshot1.child("date").getValue(String.class);p.setDate(date);
-                                String donType = dataSnapshot1.child("donType").getValue(String.class);p.setType(donType);
-                                String time = dataSnapshot1.child("time").getValue(String.class);p.setTime(time);
-                                String userId = dataSnapshot1.child("userId").getValue(String.class);p.setUid(userId);
-                                DatabaseReference data=FirebaseDatabase.getInstance().getReference().
-                                        child("User").child(userId);
-                                data.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(DataSnapshot dataSnapshot) {
-                                        name=dataSnapshot.child("userName").getValue(String.class);
-                                        p.setName(name);
-                                        Toast.makeText(getActivity().getApplicationContext(), ""+name, Toast.LENGTH_SHORT).show();
-
-                                    }
-
-                                    @Override
-                                    public void onCancelled(DatabaseError databaseError) {
-
-                                    }
-                                });*/
-                                //String name=data.child("userName").getValue(String.class);
-
-                               reservation p = new reservation(uid,date,time,c,donType);
+                               reservation p = new reservation(userId,date,time,name,donType);
 
                                 list0.add(p);
                             }
                             reservationAdapter reservationAdapter = new reservationAdapter(getActivity(), list0);
                             int i = reservationAdapter.getItemCount();
-                           // System.out.println(i);
                             pgsBar.setVisibility(GONE);
-                            //.setVisibility(GONE);
                             recyclerView0.setAdapter(reservationAdapter);
                         }else{
-                            //empty.setVisibility(View.VISIBLE);
                             pgsBar.setVisibility(GONE);
-
                         }
                     }
                     @Override
